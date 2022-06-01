@@ -1,0 +1,191 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+}
+
+.main .container{
+    width: 50%;
+    height: 50vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    border-radius: 15px;
+}
+
+.main .container .right{
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to top right, #B043BA 15%, #443E9D 85%);
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main .container .right .block{
+    width: 75%;
+    height: 200px;
+    margin: auto;
+    text-align: center;
+}
+
+.main .container .right .block h2{
+    color: #fff;
+    font-family: "Microsoft YaHei UI", cursive;
+    margin-top: 25px;
+}
+
+.main .container .right .block .content{
+    width: 100%;
+    height: 45px;
+    margin-top: 25px;
+}
+
+.main .container .right .block .content p {
+    font-size: 18px;
+    color: #fff;
+    font-family: "Microsoft YaHei UI", cursive;
+}
+
+.main .container .right .block button{
+    width: 150px;
+    height: 50px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.main .container .left{
+    width: 50%;
+    height: 100%;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main .container .left .block{
+    width: 75%;
+    height: 200px;
+    margin: 35px auto;
+    text-align: center;
+}
+
+.main .container .left .block h1{
+    font-family: "Microsoft YaHei UI", cursive;
+    margin-top: 25px;
+}
+
+.main .container .left .block .input{
+    width: 100%;
+    height: auto;
+    margin: 25px auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.main .container .left .block .input input[type=email], input[type=password]{
+    width: 100%;
+    height: 40px;
+    font-size: 17px;
+    outline: none;
+    border: 1px solid #C0C0C0;
+    border-radius: 15px;
+    padding: 5px 5px;
+}
+
+.main .container .left .block .input img{
+    width: 28px;
+    height: 28px;
+    position: relative;
+    right: 35px;
+    z-index: 200;
+    align-self: center;
+}
+
+.main .container .left .block .heads{
+    width: 100%;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Microsoft YaHei UI", cursive;
+    margin-top: 35px;
+}
+
+.main .container .left .block .heads a{
+    color: #4169e1;
+
+}
+
+.main .container .left .block .heads a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.main .container .left .block .heads label{
+    position: absolute;
+    left: 75px;
+}
+
+.main .container .left .block button{
+    width: 50%;
+    height: 45px;
+    align-self: center;
+    background-color: #4169e1;
+    font-size: 18px;
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    margin-top: 35px;
+}
+
+.main .container .left .block .no_acc{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 55px;
+}
+
+.main .container .left .block .no_acc p {
+    font-family: "Microsoft YaHei UI", cursive;
+}
+
+.main .container .left .block .no_acc a {
+    margin-left: 8px;
+    font-family: "Microsoft YaHei UI", cursive;
+    color: #4169e1;
+}
+
+.main .container .left .block .no_acc a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+footer{
+    position: absolute;
+    bottom: 10px;
+}
+
+footer p {
+    font-size: 18px;
+    font-family: "Comic Sans MS", cursive;
+    margin-left: 15px;
+}
+
