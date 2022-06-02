@@ -3,10 +3,10 @@
 class User
 {
 
-    private static string $uuid;
-    private static string $fullName;
-    private static string $email;
-    private static string $password;
+    private string $uuid;
+    private string $fullName;
+    private string $email;
+    private string $password;
 
     public function __construct($uuid, $name, $email, $password)
     {
@@ -16,23 +16,23 @@ class User
         self::$password = $password;
     }
 
-    public static function get_ID(): string
+    public function get_ID(): string
     {
-        return self::$uuid;
+        return $this->uuid;
     }
 
-    public static function get_Name():string
+    public function get_Name():string
     {
-        return self::$fullName;
+        return $this->fullName;
     }
 
-    public static function get_Email():string
+    public function get_Email():string
     {
-        return self::$email;
+        return $this->email;
     }
 
-    public static function get_Password():string
+    public function get_Password():string
     {
-        return self::$password;
+        return $this->password;
     }
 }
