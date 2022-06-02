@@ -3,56 +3,73 @@
 class User_Controller
 {
 
-    private PDOStatement $stmt;
-    private $row;
+    private static $stmt;
+    private static $row;
 
-    private string $SQL;
+    private static string $SQL;
 
-    private string $email;
-    private string $password;
+    private static string $email;
+    private static string $password;
 
-
-    public function Authenticate($conn, $arr):array
+    public static function Authenticate($conn, $arr):array
     {
+        /**
+         * Handles user authentication
+         * @param $conn
+         * @param $arr
+         * @return array|string[]
+         */
+
         if ($conn)
         {
-            $this->email = $arr['Email'] ?? "";
-            $this->password = $arr['Password'] ?? "";
+            self::$email = $arr['Email'] ?? "";
+            self::$password = $arr['Password'] ?? "";
 
             try
             {
-                $this->SQL = "";
-                $this->stmt = $conn->prepare($this->SQL);
-                $this->stmt->execute();
+                self::$SQL = "SELECT UUID, FullName, Email, Password FROM users WHERE Email=?";
+                self::$stmt = $conn->prepare(self::$SQL);
+                self::$stmt->bindValue(1, self::$email);
+                self::$stmt->execute();
 
-                $this->row = $this->stmt->fetch();
+                self::$row = self::$stmt->fetch();
 
-                if (isset($this->row))
-                {
-                    if (password_verify($this->password, $this->row['Password']))
+                if (isset(self::$row)) {
+                    if (password_verify(self::$password, self::$row['Password'])) {
+                        return array('Message' => 'Authenticated', 'Token' => self::Generate_Token(), 'UUID' => self::$row['UUID'], 'Name'=>self::$row['FullName']);
+                    }else
                     {
-                        return array('Message' => 'Authenticated', 'Token' => $this->Generate_Token(), 'UUID' => $this->row['UUID']);
+                        return array('Message' => 'Invalid Password');
                     }
+                }else
+                {
+                    return array('Message' => 'Account Not Found');
                 }
             }catch (Exception $ex)
             {
-                return array('Message' => 'Could not authenticate');
+                return array('Message' => "Exception: {$ex->getMessage()}");
             }
-
         }
         return array();
     }
 
-    public function Create($conn, $arr): bool
+
+    public static function Create($conn, $arr): bool
     {
+        /**
+         * Handles new creation of users in Database
+         * @param $conn
+         * @param $arr
+         * @return bool
+         */
+
         if ($conn)
         {
             try
             {
-
-                $this->SQL = "INSERT INTO users (UUID, FullName, Email, Password) VALUES (?,?,?,?)";
-                $this->stmt = $conn->prepare($this->SQL);
-                $this->execute($arr);
+                self::$SQL = "INSERT INTO users (UUID, FullName, Email, Password) VALUES (?,?,?,?)";
+                self::$stmt = $conn->prepare(self::$SQL);
+                self::$stmt->execute($arr);
 
                 return true;
             }catch(Exception $ex)
@@ -65,6 +82,11 @@ class User_Controller
 
     public function Generate_Token(): string
     {
+
+        /**
+         * Creates Authentication Token For User
+         * @return string
+         */
         $token = openssl_random_pseudo_bytes(16);
         return bin2hex($token);
     }

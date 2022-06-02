@@ -18,11 +18,13 @@ class DatabaseHelper
         {
             try
             {
-                self::$conn = new PDO("mysql:host=".self::$servername.";dbname=".self::$dbname.";", self::$username, self::$password);
+                self::$conn = new PDO("mysql:host=".self::$servername.";", self::$username, self::$password);
                 self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                self::$SQL = "CREATE DATABASE ".self::$dbname;
+                self::$SQL = "CREATE DATABASE IF NOT EXISTS ".self::$dbname;
+                self::$conn->exec(self::$SQL);
 
+                self::$SQL = "USE ".self::$dbname;
                 self::$conn->exec(self::$SQL);
             }catch (Exception $ex)
             {

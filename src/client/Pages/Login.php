@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Login</title>
         <style>
             <?php include '../Styles/Login.css' ?>
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
 
@@ -14,12 +15,12 @@
                     <div class="block">
                         <h1>Login</h1>
                         <div class="input">
-                            <input type="email" placeholder="Email"/>
-                            <img src="../Images/user.png" alt="usr" id="txtEmail"/>
+                            <input type="email" placeholder="Email" id="txtEmail"/>
+                            <img src="../Images/user.png" alt="usr" />
                         </div>
                         <div class="input">
-                            <input type="password" placeholder="Password"/>
-                            <img src="../Images/lock.png" alt="usr" id="txtPassword"/>
+                            <input type="password" placeholder="Password" id="txtPassword"/>
+                            <img src="../Images/lock.png" alt="usr" />
                         </div>
                         <div class="heads">
                             <input type="checkbox" id="chkRemember"/>
@@ -27,7 +28,7 @@
 
                             <a>Forgot Password?</a>
                         </div>
-                        <button id="btnLogin">Login</button>
+                        <input type="button" id="btnLogin" value="Login" />
 
                         <div class="no_acc">
                             <p>Don't have an account? </p>
@@ -53,6 +54,8 @@
         <footer>
             <p>&copy ST10131873 Owen Burns, 2022</p>
         </footer>
+
+        <script src="../JS/Login.js" type="text/javascript"></script>
 
     </body>
 </html>
