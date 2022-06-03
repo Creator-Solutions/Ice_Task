@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
         <style>
             <?php include '../Styles/Login.css' ?>
@@ -28,7 +29,7 @@
 
                             <a>Forgot Password?</a>
                         </div>
-                        <input type="button" id="btnLogin" value="Login" />
+                        <input type="button" id="btnLogin" onclick="Login()" value="Login" />
 
                         <div class="no_acc">
                             <p>Don't have an account? </p>

@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    margin-top: 25px;
+    margin-left: 25px;
+    font-family: "Microsoft YaHei UI";
+}
+
+p{
+    font-size: 24px;
+    margin-top: 5px;
+    margin-left: 25px;
+    font-family: "Microsoft YaHei UI";
+}

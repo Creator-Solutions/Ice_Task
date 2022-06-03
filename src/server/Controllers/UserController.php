@@ -34,14 +34,15 @@ class User_Controller
 
                 self::$row = self::$stmt->fetch();
 
-                if (isset(self::$row)) {
+                if (isset(self::$row))
+                {
                     if (password_verify(self::$password, self::$row['Password'])) {
                         return array('Message' => 'Authenticated', 'Token' => self::Generate_Token(), 'UUID' => self::$row['UUID'], 'Name'=>self::$row['FullName']);
                     }else
                     {
                         return array('Message' => 'Invalid Password');
                     }
-                }else
+                }elseif (!isset(self::$row))
                 {
                     return array('Message' => 'Account Not Found');
                 }
@@ -67,9 +68,14 @@ class User_Controller
         {
             try
             {
-                self::$SQL = "INSERT INTO users (UUID, FullName, Email, Password) VALUES (?,?,?,?)";
+                self::$SQL = "INSERT INTO users (UUID, FullName, Email, Password, Verified) VALUES (?,?,?,?, ?)";
                 self::$stmt = $conn->prepare(self::$SQL);
-                self::$stmt->execute($arr);
+                self::$stmt->bindValue(1, $arr['UUID']);
+                self::$stmt->bindValue(2, $arr['FullName']);
+                self::$stmt->bindValue(3, $arr['Email']);
+                self::$stmt->bindValue(4, $arr['Password']);
+                self::$stmt->bindValue(5, $arr['Verified']);
+                self::$stmt->execute();
 
                 return true;
             }catch(Exception $ex)
@@ -80,7 +86,7 @@ class User_Controller
         return false;
     }
 
-    public function Generate_Token(): string
+    public static function Generate_Token(): string
     {
 
         /**
@@ -89,5 +95,20 @@ class User_Controller
          */
         $token = openssl_random_pseudo_bytes(16);
         return bin2hex($token);
+    }
+
+    public static function uuidv4():string
+    {
+        return sprintf( '%04x%04x-%04x-%04x-%04x%04x',
+            mt_rand(0, 0xffff), mt_rand(0, 0xffff),
+
+            mt_rand(0, 0xffff),
+
+            mt_rand(0, 0x0fff) | 0x4000,
+
+            mt_rand(0, 0x3fff) | 0x8000,
+
+            mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
+        );
     }
 }
