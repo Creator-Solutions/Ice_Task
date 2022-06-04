@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.filter{
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    border-right: 2px solid #C0C0C0;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter .top{
+    height: 75px;
+    border-bottom: 2px solid #C0C0C0 ;
+    display: flex;
+}
+
+.filter .top p {
+    font-size: 28px;
+    font-family: 'Roboto Condensed', sans-serif;
+    align-self: center;
+    margin-left: 15px;
+}
+
+.filter .category{
+    height: 25vh;
+    border-bottom: 2px solid #C0C0C0 ;
+    align-self: center;
+}
+
+.filter .category .title{
+    font-size: 22px;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 15px 0px 0px 15px;
+}
+
+.filter .category .cat_list{
+    display: block;
+    margin-top: 25px;
+}
+
+.filter .category .cat_list input[type=checkbox]{
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.filter .category .cat_list label{
+    width: 85%;
+    font-size: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    position: relative;
+    display: inline-block;
+}
+
+.filter .price_range{
+    height: 13vh;
+    border-bottom: 2px solid #C0C0C0 ;
+}
+
+.filter .price_range p {
+    font-size: 22px;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 15px 0px 0px 15px;
+}
+
+.filter .price_range .value{
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 25px auto;
+}
+
+.filter .price_range .value input[type=text]{
+    width: 35%;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 15px;
+    border: 1px solid #C0C0C0;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    padding-top: 7px;
+    marign-left: 10px;
+    outline: none;
+}
+
+.filter .price_range .value .minVal{
+    position: absolute;
+    left: 10px;
+    bottom: 57%;
+}
+
+.filter .price_range .value .maxVal{
+    position: absolute;
+    left: 125px;
+    bottom: 57%;
+}
+
+.filter button{
+    background-color: #355e3b;
+    width: 150px;
+    height: 45px;
+    outline: none;
+    border: none;
+    align-self: center;
+    margin-top: 25px;
+    color: #fff;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+    border-radius: 15px;
+}
+
+.filter button:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.parent{
+    height: 100%;
+    margin-left: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.parent h2{
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 25px 0px 0px 25px;
+}
+
+.parent h2 span{
+    color: #ff9f00;
+}
+
+.parent h2 span:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.parent .container{
+    width: 100%;
+    height: 100%;
+    margin: 45px auto;
+}
+
+.parent .container .card{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 315px;
+    height: 55vh;
+    margin-left: 45px;
+    margin-top: 15px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.parent .container .card img{
+    width: 75%;
+    height: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding-top: 15px;
+}
+
+.parent .container .card .info{
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+.parent .container .card .card_title{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 26px;
+    text-decoration: none;
+    color: #111;
+}
+
+.parent .container .card .card_title:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.parent .container .card .price{
+    font-size: 26px;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin-top: 20px;
+}
+
+.parent .container .card button{
+    width: 45%;
+    height: 35px;
+    outline: none;
+    border: none;
+    background-color: #24252A;
+    border-radius: 15px;
+    color: #fff;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+    margin-top: 25px;
+}
+

@@ -37,6 +37,13 @@ class User_Controller
                 if (isset(self::$row))
                 {
                     if (password_verify(self::$password, self::$row['Password'])) {
+                        session_start();
+                        $_SESSION['Type'] = 'Student';
+                        $_SESSION['UUID'] = self::$row['UUID'];
+                        $_SESSION['Token'] = self::Generate_Token();
+                        $_SESSION['Email'] = self::$row['Email'];
+                        $_SESSION['Name'] = self::$row['FullName'];
+
                         return array('Message' => 'Authenticated', 'Token' => self::Generate_Token(), 'UUID' => self::$row['UUID'], 'Name'=>self::$row['FullName']);
                     }else
                     {

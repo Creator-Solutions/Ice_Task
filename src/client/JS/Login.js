@@ -22,6 +22,11 @@ const Login = () => {
 
                 switch(data[0].Message){
                     case 'Authenticated':
+                      /*  sessionStorage.setItem('Token', data[0].Token);
+                        sessionStorage.setItem('Type', 'Student');
+                        sessionStorage.setItem('UUID', data[0].UUID);
+
+                       */
                         window.location.href = `../Pages/Dashboard.php?auth-type=true?token=${data[0].Token}`
                         break;
                     case 'Invalid Password':
