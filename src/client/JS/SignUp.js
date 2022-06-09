@@ -45,7 +45,7 @@ const SignUp = () => {
                             window.location.href = `../Pages/Dashboard.php?auth-type=true?${data[0].Token}`
                             break;
                         case 'Could Not Register':
-
+                            alert('Could not register user');
                             break;
                     }
                 },

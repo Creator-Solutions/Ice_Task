@@ -20,7 +20,8 @@
             height: 65px;
             background-color: #24252A;
             color: #fff;
-
+            position: relative;
+            z-index: 100;
         }
 
         .main .container .block{
@@ -77,16 +78,16 @@
                 <p class="title">BookShop</p>
 
                 <div class="nav">
-                    <a>Home</a>
+                    <a href="Dashboard.php">Home</a>
                     <?php
                         if (isset($_SESSION['Type']) && $_SESSION['Type'] == 'Student'){
-                            echo "<a>Cart (0)</a>";
+                            echo "<a href='Cart.php' id='cart'>Cart (0)</a>";
                         }elseif (isset($_SESSION['Type']) && $_SESSION['Type'] == 'Admin')
                         {
                             echo "<a>Students</a>";
                         }
                     ?>
-                    <a>Sell a book</a>
+                    <a href="Sell.php">Sell a book</a>
                     <?php
                         if (isset($_SESSION['Type']))
                         {
@@ -99,7 +100,7 @@
 
                 </div>
 
-                <p clasS="user">
+                <p class="user" >
                    <?php
                     if (isset($_SESSION['Email']))
                     {

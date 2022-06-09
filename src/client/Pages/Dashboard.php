@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if (!empty($_SESSION['Cart']) && isset($_SESSION['Cart'])){
+        $_SESSION['Cart'] = array();
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,6 +16,9 @@
 <body>
     <?php include 'header.php'  ?>
 
+    <input type="hidden" value="<?php
+        echo $_SESSION['UUID'];
+    ?>" id="UUID"/>
 
     <div class="filter">
         <div class="top">
@@ -39,13 +45,13 @@
 
             <div class="value">
                 <p class="minVal">R</p>
-                <input type="text" placeholder="0"/>
+                <input type="text" placeholder="0" id="txtminVal"/>
                 <p class="maxVal">R</p>
-                <input type="text" placeholder="0"/>
+                <input type="text" placeholder="0" id="txtmaxVal"/>
             </div>
         </div>
 
-        <button>Apply Filter</button>
+        <button id="btnApplyFilter">Apply Filter</button>
     </div>
 
     <div class="parent">

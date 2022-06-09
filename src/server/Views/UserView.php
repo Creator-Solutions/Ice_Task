@@ -8,7 +8,6 @@ class UserView
 {
 
     private static DatabaseHelper $dbHelper;
-    private static DB_Model $dbModel;
     private static User_Controller $controller;
     private static User $user;
 

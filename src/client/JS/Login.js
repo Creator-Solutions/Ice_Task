@@ -1,3 +1,16 @@
+$(function(){
+    $.ajax({
+        method: 'GET',
+        url: '/Ice_Task/src/server/Create_DB.php',
+        success:function(response){
+            console.log(response);
+        },
+        error: function(err){
+            console.log(`[Exception]: ${err}`);
+        }
+    });
+})
+
 const Check_Input = (email, password) => {
     return !(!email || !password);
 };

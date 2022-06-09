@@ -22,14 +22,28 @@ class BookView
 
         self::$controller = new Book_Controller;
 
-        self::BookController(self::$dbHelper::$conn);
+        self::$encodedData = file_get_contents("php://input");
+        self::$decodedData = json_decode(self::$encodedData, true);
+
+        if (isset(self::$decodedData['Tag']))
+        {
+            self::Filter(self::$dbHelper::$conn, self::$decodedData);
+
+        }elseif (!isset(self::$decodedData['Tag']))
+        {
+            self::BookController(self::$dbHelper::$conn);
+        }
     }
 
     private static function BookController($conn)
     {
-        echo self::$controller::Get_Product($conn);
+        self::$controller::Get_Product($conn);
     }
 
+    private static function Filter($conn, $filter)
+    {
+        echo self::$controller::Filter_Product($conn, $filter);
+    }
 }
 
 $view = new BookView();

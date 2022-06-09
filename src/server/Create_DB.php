@@ -39,9 +39,7 @@ class DB_Model
                 return false;
             }
         }
-
     return false;
     }
 }
-
 $db = new DB_Model();
