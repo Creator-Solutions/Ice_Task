@@ -1,10 +1,16 @@
+<?php
+    if (isset($_SESSION))
+    {
+        session_destroy();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
         <style>
-            <?php include '../Styles/Login.css' ?>
+            <?php include '../Styles/Admin.css' ?>
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
@@ -30,6 +36,7 @@
                             <a>Forgot Password?</a>
                         </div>
                         <input type="button" id="btnLogin" onclick="Login()" value="Login" />
+                        <a href="Admin.php">Login as Admin</a>
 
                         <div class="no_acc">
                             <p>Don't have an account? </p>

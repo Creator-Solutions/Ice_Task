@@ -6,6 +6,7 @@ include '../Controllers/BooksController.php';
 class BookView
 {
 
+    //Class Attributes
     private static DatabaseHelper $dbHelper;
     private static DB_Model $dbModel;
     private static Book_Controller $controller;
@@ -15,6 +16,11 @@ class BookView
 
     private static array $response;
 
+    /**
+     * Class Constructor => Initialize class attributes
+     *
+     *
+     */
     public function __construct()
     {
         self::$dbHelper = new DatabaseHelper;
@@ -35,11 +41,25 @@ class BookView
         }
     }
 
+    /**
+     * Call Controller Function
+     *
+     *
+     * @param $conn
+     * @return void
+     */
     private static function BookController($conn)
     {
         self::$controller::Get_Product($conn);
     }
 
+    /**
+     * Call Filter Function From Controller Class
+     *
+     *
+     * @param $conn
+     * @return void
+     */
     private static function Filter($conn, $filter)
     {
         echo self::$controller::Filter_Product($conn, $filter);

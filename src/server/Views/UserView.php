@@ -35,13 +35,12 @@ class UserView
     /**
      * Handles Controller Functions
      *
+     *
      * @return void
-     *
      * @echo json
-     *
      */
     public static function UserController($conn)
-        {
+    {
         self::$encodedData = file_get_contents("php://input");
         self::$decodedData = json_decode(self::$encodedData, true);
 
@@ -79,6 +78,9 @@ class UserView
            {
                self::$response[] = array('Message' => 'Could Not Register');
            }
+        }elseif (self::$decodedData['Type'] == 'Admin')
+        {
+            self::$response[] = self::$controller::Authenticate_Admin($conn, self::$decodedData);
         }
         echo json_encode(self::$response);
     }

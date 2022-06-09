@@ -2,7 +2,7 @@
 
 class Product
 {
-
+    //Class Properties
     private string $admin_name;
     private string $isbn;
     private string $book_name;
@@ -11,6 +11,12 @@ class Product
     private float $price;
     private string $image;
 
+    /**
+     * Class Constructor => initialize class attributes
+     *
+     *
+     * @param $arr
+     */
     public function __construct($arr)
     {
         $this->admin_name = $arr['Admin_Name'];

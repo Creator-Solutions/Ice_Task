@@ -23,6 +23,7 @@
                <input type="text" placeholder="Shortened Book Display Name" id="txtDisplayName" />
                <input type="text" placeholder="ISBN (13)" id="txtISBN" />
                <input type="text" placeholder="Price" id="txtPrice" />
+               <input type="text" placeholder="Course" id="txtCourse" />
                <textarea id="txtDescription" placeholder="Description...."></textarea>
                <input type="text" placeholder="Student Email" id="txtStudentEmail" />
                <input type="file" id="txtImage"/>

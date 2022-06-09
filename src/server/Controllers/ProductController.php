@@ -4,7 +4,7 @@ include '../Models/Product.php';
 
 class Product_Controller
 {
-
+    //Class Properties
     private static Product $product;
 
     private static string $SQL;
@@ -15,6 +15,14 @@ class Product_Controller
 
     private static Array $response;
 
+    /**
+     * Fetch all products in database
+     *
+     *
+     * @param $conn
+     * @param $token
+     * @return array
+     */
     public static function Get_Product($conn, $token):array
     {
 
@@ -29,6 +37,7 @@ class Product_Controller
                 self::$stmt->bindValue(1, self::$sku);
                 self::$stmt->execute();
 
+                //Append table row to list
                 self::$row = self::$stmt->fetch();
 
                 if (isset(self::$row))
@@ -51,7 +60,7 @@ class Product_Controller
                 self::$response[] = array('Message' => 'Could Not Find Product');
             }
         }
-
+        //return empty array if no producs found
         return array();
     }
 }

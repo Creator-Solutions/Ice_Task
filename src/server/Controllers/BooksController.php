@@ -4,14 +4,19 @@ include '../Models/Book.php';
 
 class Book_Controller
 {
-
+    //Class Properties
     private static $stmt;
 
     private static string $SQL;
     private static string $filter_tag;
     private static float $minVal, $maxVal;
 
-
+    /**
+     * Select all books from table
+     *
+     * @param $conn
+     * @return void
+     */
     public static function Get_Product($conn)
     {
         if ($conn)
@@ -29,6 +34,13 @@ class Book_Controller
         }
     }
 
+    /**
+     * Filtering system for specific books
+     *
+     * @param $conn
+     * @param $filter_arr
+     * @return void
+     */
     public static function Filter_Product($conn, $filter_arr)
     {
         if ($conn)
@@ -82,7 +94,6 @@ class Book_Controller
         {
             if (count($row) > 0)
             {
-                $isbn = $row['ISBN'];
                 echo "<div class='card' id=$row[ISBN]>" .
                     "<img src=../Images/$row[Image] alt=Clean Code/>" .
                     "<div class=info>" .

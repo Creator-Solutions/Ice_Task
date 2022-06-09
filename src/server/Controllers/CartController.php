@@ -4,7 +4,7 @@ session_start();
 
 class CartController
 {
-
+    //Class Properties
     private static string $SQL;
     private static $stmt;
 
@@ -18,6 +18,12 @@ class CartController
     private static string $deliver_method;
 
 
+    /**
+     * Adds items to cart (Session super global)
+     *
+     * @param $arr
+     * @return int
+     */
     public static function Add_To_Cart($arr): int
     {
         if (empty($_SESSION['Cart']))
@@ -30,6 +36,14 @@ class CartController
         return count($_SESSION['Cart']);
     }
 
+
+    /**
+     * Return cards of items in cart
+     *
+     *
+     * @param $conn
+     * @return void
+     */
     public static function View_Cart($conn)
     {
         $whereIn = "";
@@ -67,6 +81,13 @@ class CartController
         }
     }
 
+    /**
+     * Calculates Sub Total of all the items in cart
+     *
+     *
+     * @param $conn
+     * @return float
+     */
     public static function Total($conn):float
     {
         if ($conn)
@@ -93,6 +114,13 @@ class CartController
         return self::$subTotal;
     }
 
+    /**
+     * Handles removing item from cart
+     *
+     *
+     * @param $arr
+     * @return void
+     */
     public static function Remove_Item($arr)
     {
         $index = $arr['Token'];
@@ -103,6 +131,15 @@ class CartController
        }
     }
 
+    /**
+     * Handles the creating of orders
+     * -> stores orders in database
+     *
+     *
+     * @param $conn
+     * @param $arr
+     * @return bool
+     */
     public static function Order_Item($conn, $arr):bool
     {
         if ($conn)

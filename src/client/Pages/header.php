@@ -84,14 +84,21 @@
                             echo "<a href='Cart.php' id='cart'>Cart (0)</a>";
                         }elseif (isset($_SESSION['Type']) && $_SESSION['Type'] == 'Admin')
                         {
-                            echo "<a>Students</a>";
+
+                            echo "<a href='Students.php'>Students</a>";
                         }
                     ?>
-                    <a href="Sell.php">Sell a book</a>
+                    <?php
+                    if (isset($_SESSION['Type']) && $_SESSION['Type'] == 'Student')
+                    {
+                        echo "<a href=Sell.php>Sell a book</a>";
+                    }
+                    ?>
+
                     <?php
                         if (isset($_SESSION['Type']))
                         {
-                            echo "<a>Logout</a>";
+                            echo "<a href='Login.php'>Logout</a>";
                         }else
                         {
                             echo "<a href='Login.php'>Sign In</a>";

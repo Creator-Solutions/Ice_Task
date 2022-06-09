@@ -4,13 +4,18 @@ require 'conn.php';
 
 class DB_Model
 {
-
+    //Class Properties
     private static string $line;
 
     private static string $SQL;
     private static DatabaseHelper $dbHelper;
     private static PDOStatement $stmt;
 
+    /**
+     * class Constructor => initialize objects
+     *
+     * @return void
+     */
     public function __construct()
     {
         self::$dbHelper = new DatabaseHelper;

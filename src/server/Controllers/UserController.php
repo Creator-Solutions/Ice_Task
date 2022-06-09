@@ -61,6 +61,56 @@ class User_Controller
         return array();
     }
 
+    public static function Authenticate_Admin($conn, $arr):array
+    {
+        /**
+         * Handles user authentication
+         * @param $conn
+         * @param $arr
+         * @return array|string[]
+         */
+
+        if ($conn)
+        {
+            self::$email = $arr['Email'] ?? "";
+            self::$password = $arr['Password'] ?? "";
+
+            try
+            {
+                self::$SQL = "SELECT Admin_ID, Admin_Name, Admin_Email, Admin_Password FROM admin WHERE Admin_Email=?";
+                self::$stmt = $conn->prepare(self::$SQL);
+                self::$stmt->bindValue(1, self::$email);
+                self::$stmt->execute();
+
+                self::$row = self::$stmt->fetch();
+
+                if (isset(self::$row))
+                {
+                    if (password_verify(self::$password, self::$row['Admin_Password'])) {
+                        session_start();
+                        $_SESSION['Type'] = 'Admin';
+                        $_SESSION['UUID'] = self::$row['Admin_ID'];
+                        $_SESSION['Token'] = self::Generate_Token();
+                        $_SESSION['Email'] = self::$row['Admin_Email'];
+                        $_SESSION['Name'] = self::$row['Admin_Name'];
+
+                        return array('Message' => 'Authenticated', 'Token' => self::Generate_Token(), 'UUID' => self::$row['Admin_ID'], 'Name'=>self::$row['Admin_Name']);
+                    }else
+                    {
+                        return array('Message' => 'Invalid Password');
+                    }
+                }elseif (!isset(self::$row))
+                {
+                    return array('Message' => 'Account Not Found');
+                }
+            }catch (Exception $ex)
+            {
+                return array('Message' => "Exception: {$ex->getMessage()}");
+            }
+        }
+        return array();
+    }
+
 
     public static function Create($conn, $arr): bool
     {
@@ -104,6 +154,11 @@ class User_Controller
         return bin2hex($token);
     }
 
+    /**
+     * Creates Unique user id for each user
+     *
+     * @return string
+     */
     public static function uuidv4():string
     {
         return sprintf( '%04x%04x-%04x-%04x-%04x%04x',

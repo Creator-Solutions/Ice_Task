@@ -3,6 +3,7 @@
 class DatabaseHelper
 {
 
+    //Class Properties
     private static string $servername = 'localhost';
     private static string $username = 'root';
     private static string $password = '';
@@ -12,6 +13,11 @@ class DatabaseHelper
 
     private static string $SQL;
 
+    /**
+     * init function => handles connecting to DB
+     *
+     * @return void
+     */
     public static function init()
     {
         if (self::$conn == null)

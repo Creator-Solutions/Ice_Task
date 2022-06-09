@@ -5,13 +5,20 @@ require '../Controllers/CartController.php';
 
 class CartView
 {
-
+    //Class Attributes
     private static CartController $controller;
     private static DatabaseHelper $dbHelper;
 
     private static $encodedData;
     private static $decodedData;
 
+    /**
+     * Class constructor => Initialize class attributes
+     * => Conditional Function Structure
+     *
+     *
+     * @return void
+     */
     public function __construct()
     {
         self::$dbHelper = new DatabaseHelper;
@@ -22,6 +29,7 @@ class CartView
         self::$encodedData = file_get_contents('php://input');
         self::$decodedData = json_decode(self::$encodedData, true);
 
+        //Call function based on Request Type
         if (self::$decodedData['Type'] == 'Add')
         {
             self::Add_To_Cart(self::$decodedData);
@@ -41,6 +49,12 @@ class CartView
         }
     }
 
+    /**
+     * Controller Class Function
+     * => Call Function based on Controller Function
+     *
+     * @return void
+     */
     public static function Add_To_Cart($arr)
     {
        echo json_encode(self::$controller::Add_To_Cart($arr));

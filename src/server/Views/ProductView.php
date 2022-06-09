@@ -5,13 +5,19 @@ include '../Controllers/ProductController.php';
 
 class ProductView
 {
-
+    //Class Attributes
     private static Product_Controller $controller;
     private static DatabaseHelper $dbHelper;
 
     private static $encodedData;
     private static $decodedData;
 
+    /**
+     * Class Contructor => Initialize objects
+     *
+     *
+     * @return void
+     */
     public function __construct()
     {
         self::$dbHelper = new DatabaseHelper;
@@ -25,6 +31,14 @@ class ProductView
         self::Get_Product(self::$dbHelper::$conn, self::$decodedData['Token']);
     }
 
+    /**
+     * Call Product function to get products from table
+     *
+     *
+     * @param $conn
+     * @param $token
+     * @return void
+     */
     public static function Get_Product($conn, $token)
     {
        echo json_encode(self::$controller::Get_Product($conn, $token));
